@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Travel Journal</title>
+    <link rel="stylesheet" href="/style/style.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-LN+7fdVzj6u52u30Kp6M/trliBMCMKTyK833zpbD+pXdCLuTusPj697FH4R/5mcr" crossorigin="anonymous">
+</head>
+<body>
+<div class="grid-container">
+    <div class="input_container">
+        <h1>Travel Journal</h1>
+        <form action="/add" method="POST">
+            <input type="text" name="country" placeholder="<%= locals.error ? error :  'Enter country name'%>" required />
+            <input type="text" name="date" placeholder="Date" />
+            <textarea name="story" placeholder="Write Your Memory Here"></textarea> 
+            <button name="submitt"> Add </button>
+        </form>
+    </div>
+
+    <aside class="sidebar">
+     <%- include ("partial/worldmap.ejs") %>
+    </aside>
+    </div>
+</div>
+    <div class="display_container">
+        <% enteries.forEach(entry => { %>
+            <div class = "entry">
+               <h2> <%= entry.country_name %> </h2>
+               <p><strong><%= entry.date %></strong></p>
+               <p> <%= entry.story %></p>
+            </div>  
+       <% }); %>
+    </div>
+<script>
+    const country_code = ("<%= countries %>").split(",");
+    console.log(country_code);
+    country_code.forEach((code) => {
+        document.getElementById(code).style.fill = "#0067B3";
+    })
+</script>
+</body>
+</html>
