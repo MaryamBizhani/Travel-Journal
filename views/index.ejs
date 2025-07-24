@@ -13,7 +13,7 @@
         <h1>Travel Journal</h1>
         <form action="/add" method="POST">
             <input type="text" name="country" placeholder="<%= locals.error ? error :  'Enter country name'%>" required />
-            <input type="text" name="date" placeholder="Date" />
+            <input type="text" name="date" placeholder="YYYY-MM-dd" />
             <textarea name="story" placeholder="Write Your Memory Here"></textarea> 
             <button name="submitt"> Add </button>
         </form>
