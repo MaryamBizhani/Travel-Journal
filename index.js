@@ -25,22 +25,22 @@ app.use(express.static('public'));
 app.get('/', async (req, res) => {
 
   //Fetch all entries from the database
-  const result = await db.query("SELECT country_code, country_name, date, story FROM journalentery");
+  const result = await db.query("SELECT country_code, country_name, date, story FROM journalentry");
   let countries = [];
   result.rows.forEach((country) => {
     countries.push(country.country_code);
   });
 
-  let JournalEntery = [];
+  let JournalEntry = [];
   //Fetch all journal entries
   result.rows.forEach((entry) => {
-    JournalEntery.push({
+    JournalEntry.push({
       country_name: entry.country_name,
       date: entry.date,
       story: entry.story
     });
   });
-  res.render('index.ejs', {enteries: JournalEntery, countries: countries});
+  res.render('index.ejs', {entries: JournalEntry, countries: countries});
 });
 
 //Form submition
