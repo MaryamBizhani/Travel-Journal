@@ -60,7 +60,7 @@ app.post('/add', async (req, res) => {
         const countryCode = result.rows[0].country_code; 
         //Insert new journal entry into the database
         await db.query(
-          "INSERT INTO journalentery (country_code, country_name, date, story) VALUES ($1, $2, $3, $4)", 
+          "INSERT INTO journalentry (country_code, country_name, date, story) VALUES ($1, $2, $3, $4)", 
           [countryCode, country_name, date, story]
         );
         res.redirect('/');
